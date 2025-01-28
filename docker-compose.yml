@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  # MySQL Container
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-rootpass}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-mydb}
+      - MYSQL_USER=${MYSQL_USER:-testuser}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-testpass}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  # MongoDB Container
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME:-root}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD:-rootpass}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  # Example placeholder for PostgreSQL (commented out by default)
+  # postgres:
+  #   image: postgres:latest
+  #   container_name: postgres
+  #   environment:
+  #     - POSTGRES_USER=${POSTGRES_USER:-postgres}
+  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgrespass}
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  mysql_data:
+  mongodb_data:
+  # postgres_data:
