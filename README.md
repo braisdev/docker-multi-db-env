@@ -165,9 +165,3 @@ docker-compose down -v
 
 - Open an **issue** for bugs or feature requests.
 - Submit **pull requests** for improvements.
-
----
-
-## License
-
-[MIT License](LICENSE)
