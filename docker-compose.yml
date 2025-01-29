@@ -14,6 +14,7 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./mysql-init-scripts/:/docker-entrypoint-initdb.d/
 
   # MongoDB Container
   mongodb:
@@ -27,19 +28,6 @@ services:
     volumes:
       - mongodb_data:/data/db
 
-  # Example placeholder for PostgreSQL (commented out by default)
-  # postgres:
-  #   image: postgres:latest
-  #   container_name: postgres
-  #   environment:
-  #     - POSTGRES_USER=${POSTGRES_USER:-postgres}
-  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgrespass}
-  #   ports:
-  #     - "5432:5432"
-  #   volumes:
-  #     - postgres_data:/var/lib/postgresql/data
-
 volumes:
   mysql_data:
   mongodb_data:
-  # postgres_data:
